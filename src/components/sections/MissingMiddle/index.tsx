@@ -64,7 +64,7 @@ export default function NewMiddle() {
       <div className={classes.sectionContent}>
         <svg viewBox="0 0 4000 3000" className={classes.sectionSvg}>
           <HouseIcon
-            color="white"
+            color="inherit"
             x={1000}
             y={3000 - HOUSE_HEIGHT}
             height={HOUSE_HEIGHT}
@@ -72,7 +72,7 @@ export default function NewMiddle() {
             className="house"
           />
           <ApartmentIcon
-            color="white"
+            color="inherit"
             x={1800}
             y={3000 - APARTMENT_HEIGHT}
             height={APARTMENT_HEIGHT}

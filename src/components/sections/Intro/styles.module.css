@@ -1,0 +1,21 @@
+.container {
+  padding-top: calc(4 * var(--gap-default));
+  padding-left: var(--gap-default);
+  padding-right: var(--gap-default);
+  width: 100%;
+}
+
+.content {
+  max-width: 800px;
+  margin: auto;
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: calc(2 * var(--gap-default));
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+}
