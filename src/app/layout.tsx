@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "YIMBY Arvada | Our Comprehensive Plan Vision",
-  description: "Explore YIMBY Arvada's advocacy, priorities, and vision for the new comprehensive plan: housing abundance, walkable neighborhoods, and vibrant communities.",
+  description:
+    "Explore YIMBY Arvada's advocacy, priorities, and vision for the new comprehensive plan: housing abundance, walkable neighborhoods, and vibrant communities.",
 };
 
 export default function RootLayout({
