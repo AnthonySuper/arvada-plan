@@ -5,8 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { DrawSVGPlugin, TextPlugin } from 'gsap/all';
 import { GSDevTools } from 'gsap/GSDevTools';
 import { useGSAP } from '@gsap/react';
-import styles from './MissingMiddle.module.css';
-import classes from './MissingMiddle2.module.css';
+import classes from './MissingMiddle.module.css';
 import HouseIcon from './house-icon.svg';
 import DrawableQuestion from './split-drawable-question.svg';
 import ApartmentIcon from './apartment-icon.svg';
@@ -16,22 +15,13 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger, GSDevTools, DrawSVGPlugin, TextPlugin);
 }
 
-const PATHS = {
-  house: "M12 3l10 9h-3v10H5V12H2l10-9z",
-  building: "M7 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M7 21h10M7 21H3M17 21h4M10 7h4M10 11h4M10 15h4",
-  question: "M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01",
-  stamp: "M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0zM12 9v4M12 17h.01",
-  chart: "M3 3v18h18M21 9l-9 9-4-4-5 5",
-  train: "M4 15c0 4.4 3.6 8 8 8s8-3.6 8-8v-8C20 4.2 18.2 2 12 2S4 4.2 4 7v8zM12 22v-4M8 22l-3-3M16 22l3-3M4 15h16M4 9h16",
-  check: "M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4L12 14.01l-3-3"
-};
 
 const STORY_HEIGHT = 375;
 const HOUSE_HEIGHT = STORY_HEIGHT * 2;
 const APARTMENT_HEIGHT = STORY_HEIGHT * 3;
 
 export default function NewMiddle() {
-  const containerRef = useRef<HTMLElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useGSAP(() => {
     gsap.set('.house', { attr: { y: 3000 + HOUSE_HEIGHT, x: 1000 } });

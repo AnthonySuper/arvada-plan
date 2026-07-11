@@ -1,101 +1,62 @@
-.container {
-  width: 100%;
-  min-height: 100vh;
+.section {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  position: relative;
-  background: var(--background);
-  padding: 2rem;
-  overflow: hidden;
+  min-height: 100dvh;
+  margin-left: var(--gap-default);
+  margin-right: var(--gap-default);
 }
 
-.header {
-  position: absolute;
-  top: 4rem;
-  font-size: 2rem;
-  font-weight: 800;
+.sectionHeader {
+  margin-bottom: var(--gap-default);
+  margin-left: var(--gap-default);
+  margin-right: var(--gap-default);
   text-align: center;
-  color: var(--foreground);
-  width: 100%;
-  max-width: 800px;
-  padding: 0 1rem;
-  z-index: 10;
 }
 
-.content {
+.sectionContent {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 1000px;
-  gap: 2rem;
   align-items: center;
-  min-height: 400px;
-  margin-top: 4rem;
-}
+  justify-content: center;
+  gap: var(--gap-default);
 
-@media (min-width: 768px) {
-  .content {
+  @media (min-width: 768px) {
     flex-direction: row;
+    gap: calc(2 * var(--gap-default));
   }
 }
 
-.graphicsColumn {
-  flex: 1;
-  width: 100%;
+.sectionSvg {
+  aspect-ratio: 4 / 3;
+  width: clamp(200px, 70vw, 800px);
+  max-height: 80vh;
+  color: inherit;
   position: relative;
-  height: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  z-index: 2;
+  background-color: inherit;
+
+  @media (min-width: 768px) {
+    width: 50vw;
+  }
 }
 
-.svgCanvas {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-}
-
-.textColumn {
-  flex: 1;
-  width: 100%;
+.sectionExposition {
+  font-size: 1.5rem;
   position: relative;
-  height: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.graphicInner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-  color: var(--foreground);
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.paragraph {
-  position: absolute;
-  opacity: 0;
-  transform: translateY(30px);
-  font-size: 1.25rem;
-  line-height: 1.6;
-  text-align: center;
-  font-weight: 500;
-  color: var(--foreground);
   width: 100%;
-  padding: 0 1rem;
-}
+  height: 500px;
+  overflow: hidden;
 
-@media (min-width: 768px) {
-  .paragraph {
-    text-align: left;
-    font-size: 1.5rem;
+  @media (min-width: 768px) {
+    height: 200px;
+  }
+
+  [data-paragraph] {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 }
