@@ -1,3 +1,4 @@
+import Intro from "@/components/sections/Intro";
 import MissingMiddle from "@/components/sections/MissingMiddle";
 import CardSection from "@/components/ui/CardSection";
 
@@ -9,102 +10,26 @@ export default function Home() {
         background: "var(--background)",
       }}
     >
-      {/* Intro section */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          padding: "6rem 2rem 4rem",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "600px",
-            width: "100%",
-            padding: "2.5rem",
-            borderRadius: "12px",
-            border: "1px solid var(--card-border)",
-            background: "var(--card-bg)",
-            boxShadow: "var(--shadow-md)",
-            textAlign: "center",
-          }}
-        >
-          <div
-            style={{
-              display: "inline-block",
-              padding: "6px 12px",
-              borderRadius: "100px",
-              background: "var(--primary-light)",
-              color: "var(--primary)",
-              fontSize: "0.85rem",
-              fontWeight: "600",
-              marginBottom: "1.5rem",
-            }}
-          >
-            🚧 Under Construction
-          </div>
-          <h1
-            style={{
-              fontSize: "2.5rem",
-              fontWeight: "800",
-              lineHeight: "1.2",
-              marginBottom: "1rem",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            YIMBY Arvada
-          </h1>
-          <h2
-            style={{
-              fontSize: "1.25rem",
-              fontWeight: "600",
-              color: "var(--muted)",
-              marginBottom: "1.5rem",
-            }}
-          >
-            Comprehensive Plan Desires
-          </h2>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: "var(--muted)",
-              marginBottom: "2rem",
-              lineHeight: "1.5",
-            }}
-          >
-            We are drafting our vision for Arvada&apos;s upcoming comprehensive plan update. Stay
-            tuned for our recommendations on housing abundance, walkable neighborhoods, and vibrant
-            communities.
-          </p>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "1rem",
-            }}
-          >
-            <a
-              href="https://yimbyaction.org"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "inline-block",
-                padding: "10px 20px",
-                borderRadius: "6px",
-                background: "var(--primary)",
-                color: "#fff",
-                fontWeight: "600",
-                fontSize: "0.95rem",
-              }}
-            >
-              About YIMBY Action
-            </a>
-          </div>
-        </div>
-      </div>
+      <Intro />
 
       <section>
         <MissingMiddle />
+
+        <div style={{ maxWidth: '650px', margin: 'auto', padding: '2rem', fontSize: '1.05rem', lineHeight: 1.6 }}>
+          <p style={{ marginBottom: '1rem' }}>
+            Duplexes, Triplexes, mother-in-law-houses, and other forms of "middle density"
+            are great choices for many people&mdash;and they're even better next to transit.
+          </p>
+          <p style={{ marginBottom: '1rem' }}>
+            Arvada's current planning standards, unfortunately, make building these types of homes
+            much more difficult than it needs to be. You need to go to several hearings and get
+            a special-use permit, just like if you were building a big apartment building.
+          </p>
+          <p>
+            In the 2026 plan, we should cut out the red tape: around transit, missing-middle housing
+            should be buildable <em>by right</em>
+          </p>
+        </div>
       </section>
 
       {/* Transit Station Section */}
