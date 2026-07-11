@@ -85,8 +85,9 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Pinned Scrollytelling Section */}
-      <MissingMiddle />
+      <section>
+        <MissingMiddle />
+      </section>
 
       {/* Transit Station Section */}
       <CardSection title="Make each G-Line Station a Destination">
