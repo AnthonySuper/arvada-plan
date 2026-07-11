@@ -1,3 +1,4 @@
+import MissingMiddle from "@/components/sections/MissingMiddle";
 import CardSection from "@/components/ui/CardSection";
 
 export default function Home() {
@@ -80,18 +81,7 @@ export default function Home() {
         </div>
       </div>
 
-      <CardSection title="Allow Missing-Middle Homes Near Transit">
-        <p style={{ marginBottom: "1rem" }}>
-          In most of Arvada, you have two options: detached single-family homes, or midrise apartments.
-          Arvadans deserve more choice.
-          We propose that Arvada&apos;s new comprehensive plan legalizes missing middle density: duplex, triples, mother-in-law houses, and other forms of &ldquo;middle density&rdquo; besides big apartment buildings.
-        </p>
-        <p>
-          Even in our existing mixed-used and transit zones, these forms of housing require multiple hearings and a special-use permit.
-          All the red tape is making housing more expensive for Arvadans, especially those who want to buy their first home.
-          We want to simplify the approval process—in areas near transit, these forms of housing should be permitted by-right.
-        </p>
-      </CardSection>
+      <MissingMiddle />
 
       <CardSection title="Make each G-Line Station a Destination">
         <p style={{ marginBottom: "1rem" }}>
