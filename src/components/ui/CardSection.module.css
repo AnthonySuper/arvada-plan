@@ -1,0 +1,19 @@
+.card {
+  max-width: 650px;
+  margin: 6rem auto;
+  padding: 0 2rem;
+  text-align: left;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+}
+
+.content {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}

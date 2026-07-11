@@ -4,85 +4,91 @@ import CardSection from "@/components/ui/CardSection";
 export default function Home() {
   return (
     <main style={{
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      minHeight: "100vh",
-      padding: "2rem",
-      textAlign: "center",
+      width: "100%",
+      background: "var(--background)",
     }}>
+      {/* Intro section */}
       <div style={{
-        maxWidth: "600px",
-        padding: "2.5rem",
-        borderRadius: "12px",
-        border: "1px solid var(--card-border)",
-        background: "var(--card-bg)",
-        boxShadow: "var(--shadow-md)",
+        display: "flex",
+        justifyContent: "center",
+        padding: "6rem 2rem 4rem",
       }}>
         <div style={{
-          display: "inline-block",
-          padding: "6px 12px",
-          borderRadius: "100px",
-          background: "var(--primary-light)",
-          color: "var(--primary)",
-          fontSize: "0.85rem",
-          fontWeight: "600",
-          marginBottom: "1.5rem",
+          maxWidth: "600px",
+          width: "100%",
+          padding: "2.5rem",
+          borderRadius: "12px",
+          border: "1px solid var(--card-border)",
+          background: "var(--card-bg)",
+          boxShadow: "var(--shadow-md)",
+          textAlign: "center",
         }}>
-          🚧 Under Construction
-        </div>
-        <h1 style={{
-          fontSize: "2.5rem",
-          fontWeight: "800",
-          lineHeight: "1.2",
-          marginBottom: "1rem",
-          letterSpacing: "-0.02em",
-        }}>
-          YIMBY Arvada
-        </h1>
-        <h2 style={{
-          fontSize: "1.25rem",
-          fontWeight: "600",
-          color: "var(--muted)",
-          marginBottom: "1.5rem",
-        }}>
-          Comprehensive Plan Desires
-        </h2>
-        <p style={{
-          fontSize: "1.05rem",
-          color: "var(--muted)",
-          marginBottom: "2rem",
-          lineHeight: "1.5",
-        }}>
-          We are drafting our vision for Arvada&apos;s upcoming comprehensive plan update. Stay tuned for our recommendations on housing abundance, walkable neighborhoods, and vibrant communities.
-        </p>
-        <div style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "1rem",
-        }}>
-          <a
-            href="https://yimbyaction.org"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: "inline-block",
-              padding: "10px 20px",
-              borderRadius: "6px",
-              background: "var(--primary)",
-              color: "#fff",
-              fontWeight: "600",
-              fontSize: "0.95rem",
-            }}
-          >
-            About YIMBY Action
-          </a>
+          <div style={{
+            display: "inline-block",
+            padding: "6px 12px",
+            borderRadius: "100px",
+            background: "var(--primary-light)",
+            color: "var(--primary)",
+            fontSize: "0.85rem",
+            fontWeight: "600",
+            marginBottom: "1.5rem",
+          }}>
+            🚧 Under Construction
+          </div>
+          <h1 style={{
+            fontSize: "2.5rem",
+            fontWeight: "800",
+            lineHeight: "1.2",
+            marginBottom: "1rem",
+            letterSpacing: "-0.02em",
+          }}>
+            YIMBY Arvada
+          </h1>
+          <h2 style={{
+            fontSize: "1.25rem",
+            fontWeight: "600",
+            color: "var(--muted)",
+            marginBottom: "1.5rem",
+          }}>
+            Comprehensive Plan Desires
+          </h2>
+          <p style={{
+            fontSize: "1.05rem",
+            color: "var(--muted)",
+            marginBottom: "2rem",
+            lineHeight: "1.5",
+          }}>
+            We are drafting our vision for Arvada&apos;s upcoming comprehensive plan update. Stay tuned for our recommendations on housing abundance, walkable neighborhoods, and vibrant communities.
+          </p>
+          <div style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "1rem",
+          }}>
+            <a
+              href="https://yimbyaction.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-block",
+                padding: "10px 20px",
+                borderRadius: "6px",
+                background: "var(--primary)",
+                color: "#fff",
+                fontWeight: "600",
+                fontSize: "0.95rem",
+              }}
+            >
+              About YIMBY Action
+            </a>
+          </div>
         </div>
       </div>
 
+      {/* Pinned Scrollytelling Section */}
       <MissingMiddle />
 
+      {/* Transit Station Section */}
       <CardSection title="Make each G-Line Station a Destination">
         <p style={{ marginBottom: "1rem" }}>
           Olde Town Arvada proves it—Train stations are more fun with things to do near them.
@@ -94,6 +100,7 @@ export default function Home() {
         </p>
       </CardSection>
 
+      {/* Parking Section */}
       <CardSection title="Relax Parking Requirements Near Transit">
         <p style={{ marginBottom: "1rem" }}>
           Right now the city of Arvada dictates the same parking requirements for every building, regardless of location.
@@ -105,7 +112,8 @@ export default function Home() {
         </p>
       </CardSection>
 
-      <CardSection title="Promote Downsize-Friendly Housing">
+      {/* Downsizing Section with extra bottom margin */}
+      <CardSection title="Promote Downsize-Friendly Housing" style={{ marginBottom: "12rem" }}>
         <p style={{ marginBottom: "1.5rem" }}>
           Like most of the Denver Metro region, Arvada has an aging population that is expected to grow over the next few decades.
           As people get older, have their kids move out, and retire, the same house they may have purchased in the 1980s might no longer make sense for their needs—but right now, they&apos;d have to leave their communities if they want to downsize.
@@ -136,4 +144,3 @@ export default function Home() {
     </main>
   );
 }
-
