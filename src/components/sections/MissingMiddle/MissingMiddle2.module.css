@@ -32,7 +32,6 @@
   aspect-ratio: 4 / 3;
   width: clamp(200px, 70vw, 800px);
   max-height: 80vh;
-  border: 1px solid white;
   color: inherit;
   position: relative;
   z-index: 2;
