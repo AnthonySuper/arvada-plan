@@ -14,6 +14,22 @@ export default function Home() {
 
       <section>
         <MissingMiddle />
+
+        <div style={{ maxWidth: '650px', margin: 'auto', padding: '2rem', fontSize: '1.05rem', lineHeight: 1.6 }}>
+          <p style={{ marginBottom: '1rem' }}>
+            Duplexes, Triplexes, mother-in-law-houses, and other forms of "middle density"
+            are great choices for many people&mdash;and they're even better next to transit.
+          </p>
+          <p style={{ marginBottom: '1rem' }}>
+            Arvada's current planning standards, unfortunately, make building these types of homes
+            much more difficult than it needs to be. You need to go to several hearings and get
+            a special-use permit, just like if you were building a big apartment building.
+          </p>
+          <p>
+            In the 2026 plan, we should cut out the red tape: around transit, missing-middle housing
+            should be buildable <em>by right</em>
+          </p>
+        </div>
       </section>
 
       {/* Transit Station Section */}
