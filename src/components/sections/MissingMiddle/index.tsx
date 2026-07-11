@@ -26,7 +26,7 @@ export default function NewMiddle() {
     () => {
       gsap.set(".house", { attr: { y: 3000 + HOUSE_HEIGHT, x: 1000 } });
       gsap.set(".apartment", { attr: { x: 1800, y: 3000 + APARTMENT_HEIGHT } });
-      gsap.set("[data-paragraph]", { opacity: 0, y: -100 });
+      gsap.set("[data-paragraph]", { opacity: 0, y: 100 });
       gsap.set('[data-paragraph="1"]', { opacity: 1, y: 0 });
       gsap.set("[data-path-question]", { drawSVG: 0, opacity: 1 });
 
@@ -43,9 +43,9 @@ export default function NewMiddle() {
 
       tl.to('[data-type="sfh"]', { text: "a single family-home", duration: 1 }, "<")
         .to(".house", { attr: { y: 3000 - HOUSE_HEIGHT }, duration: 0.75 }, "<")
-        .to('[data-type="apt"]', { text: "or a mid-rise apartment", duraion: 1 })
+        .to('[data-type="apt"]', { text: "or a mid-rise apartment.", duration: 1 })
         .to(".apartment", { attr: { y: 3000 - APARTMENT_HEIGHT }, duration: 0.75 }, "<")
-        .to('[data-paragraph="1"]', { opacity: 0, y: 500, duration: 1 }, "step-2")
+        .to('[data-paragraph="1"]', { opacity: 0, y: -100, duration: 1 }, "step-2")
         .to('[data-paragraph="2"]', { opacity: 1, y: 0, duration: 1 }, "<")
         .to(".house", { attr: { x: 0 }, duration: 1 }, "-=0.25")
         .to(".apartment", { attr: { x: 3000 }, duration: 1 }, "<")
