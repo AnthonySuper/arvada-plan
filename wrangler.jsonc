@@ -3,13 +3,11 @@
   "name": "arvada-plan",
   "main": ".open-next/worker.js",
   "compatibility_date": "2026-07-11",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
+  "compatibility_flags": ["nodejs_compat"],
   "assets": {
-    "directory": ".open-next/assets"
+    "directory": ".open-next/assets",
   },
   "observability": {
-    "enabled": true
-  }
+    "enabled": true,
+  },
 }
