@@ -9,7 +9,6 @@ export default function Home() {
         width: "100%",
         background: "var(--background)",
       }}
-      className="main"
     >
       <Intro />
 
