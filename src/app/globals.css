@@ -17,6 +17,7 @@
 
   --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
+  --centered-width: 600px;
 }
 
 @media (prefers-color-scheme: dark) {
