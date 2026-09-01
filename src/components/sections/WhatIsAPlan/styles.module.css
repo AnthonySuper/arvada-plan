@@ -1,0 +1,8 @@
+.whatis {
+  max-width: 600px;
+  margin: auto;
+
+  li {
+    margin-left: calc(2 * var(--gap-default));
+  }
+}

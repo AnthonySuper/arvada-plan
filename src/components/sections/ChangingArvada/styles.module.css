@@ -1,0 +1,36 @@
+.changeArea {
+  margin-top: calc(4 * var(--gap-default));
+}
+
+.changeList {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.changeSection {
+  display: flex;
+  flex-direction: row;
+}
+
+.changeCaption {
+  font-size: 2rem;
+  background-color: var(--primary);
+  color: var(--primary-text);
+  text-align: right;
+  width: 50%;
+  padding: var(--gap-default);
+  padding-right: calc(3 * var(--gap-default));
+  clip-path:
+    polygon(
+      0 0,
+      calc(100% - 2 * var(--gap-default)) 0,
+      100% 50%,
+      calc(100% - 2 * var(--gap-default)) 100%,
+      0 100%
+    );
+}
+
+.changeBody {
+  padding: var(--gap-default);
+}

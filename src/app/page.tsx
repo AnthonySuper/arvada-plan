@@ -1,5 +1,7 @@
+import ChangingArvada from "@/components/sections/ChangingArvada";
 import Intro from "@/components/sections/Intro";
 import MissingMiddle from "@/components/sections/MissingMiddle";
+import WhatIsAPlan from "@/components/sections/WhatIsAPlan";
 import CardSection from "@/components/ui/CardSection";
 
 export default function Home() {
@@ -12,9 +14,10 @@ export default function Home() {
     >
       <Intro />
 
-      <section>
-        <MissingMiddle />
+      <WhatIsAPlan />
+      <ChangingArvada />
 
+      <section>
         <div style={{ maxWidth: '650px', margin: 'auto', padding: '2rem', fontSize: '1.05rem', lineHeight: 1.6 }}>
           <p style={{ marginBottom: '1rem' }}>
             Duplexes, Triplexes, mother-in-law-houses, and other forms of "middle density"
