@@ -17,6 +17,10 @@ export default function Home() {
       <WhatIsAPlan />
       <ChangingArvada />
 
+      <div style={{ textAlign: 'center', fontWeight: 100, fontSize: '4rem', maxWidth: 'var(--centered-width)', margin: 'auto', marginTop: 'calc(3 * var(--gap-default))' }}>
+        Help I need a transition
+      </div>
+
       {/* Transit Station Section */}
       <CardSection title="Make each G-Line Station a Destination">
         <p style={{ marginBottom: "1rem" }}>
@@ -29,6 +33,7 @@ export default function Home() {
           stations—Restaurants, bars, and other amenities that give people a reason to stop by.
         </p>
       </CardSection>
+
 
       {/* Parking Section */}
       <CardSection title="Relax Parking Requirements Near Transit">
