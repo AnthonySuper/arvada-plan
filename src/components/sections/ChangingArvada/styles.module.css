@@ -1,24 +1,27 @@
 .changeArea {
   margin-top: calc(4 * var(--gap-default));
-}
-
-.changeList {
-  list-style-type: none;
   display: flex;
   flex-direction: column;
 }
 
+
 .changeSection {
   display: flex;
   flex-direction: row;
+  --caption-background: var(--primary);
+
+  &:nth-child(even) {
+    --caption-background: oklch(from var(--primary) calc(l * 0.5) c h);
+  }
 }
 
 .changeCaption {
   font-size: 2rem;
-  background-color: var(--primary);
+  background-color: var(--caption-background);
   color: var(--primary-text);
   text-align: right;
-  width: 50%;
+  width: 55%;
+  flex-shrink: 0;
   padding: var(--gap-default);
   padding-right: calc(3 * var(--gap-default));
   clip-path:
@@ -33,4 +36,7 @@
 
 .changeBody {
   padding: var(--gap-default);
+  padding-left: calc(2 * var(--gap-default));
+  display: flex;
+  align-items: center;
 }

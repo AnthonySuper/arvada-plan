@@ -2,6 +2,7 @@
   /* Color Palette - Fresh Green, Teal & Warm Accents */
   --primary-hue: 156;
   --primary: hsl(var(--primary-hue), 72%, 38%);
+  --primary-darker: hsl(var(--primary-hue), 72%, 20%);
   --primary-text: white;
 
   --background: hsl(0, 0%, 98%);

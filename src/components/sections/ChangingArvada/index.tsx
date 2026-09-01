@@ -31,6 +31,10 @@ export default function ChangingArvada() {
           Arvada got more expensive, yo!
         </p>
       </ChangeSection>
+      <ChangeSection caption="More Transit-Friendly">
+        In 2014, Arvada had zero rail coverage whatsoever.
+        Now, we have the G Line, a modern commuter railway&mdash;and one that&apos;s just been upgraded to run every 15 minutes again.
+      </ChangeSection>
     </dl>
   )
 }
