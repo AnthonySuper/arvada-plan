@@ -1,3 +1,4 @@
+import Cite from "@/components/footnotes/Cite";
 import styles from './styles.module.css';
 
 export default function Intro() {
@@ -9,7 +10,7 @@ export default function Intro() {
 
         <p>
           In 2026, the city of Arvada is writing a new <em>comprehensive plan</em>, a document
-          that helps the city decide what should get built and where.
+          that helps the city decide what should get built and where<Cite source="planUpdate" />.
           This is a big opportunity for the city to correct past mistakes, innovate for the future,
           and ensure that the next decade is Arvada&apos;s best ever.
         </p>

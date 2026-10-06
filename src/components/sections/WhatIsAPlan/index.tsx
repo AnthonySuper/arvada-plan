@@ -1,3 +1,4 @@
+import Cite from "@/components/footnotes/Cite";
 import styles from './styles.module.css';
 
 export default function WhatIsAPlan() {
@@ -20,7 +21,7 @@ export default function WhatIsAPlan() {
       </ul>
 
       <p>
-        The last comprehensive plan was in 2014.
+        The last comprehensive plan was in 2014<Cite source="plan2014" />.
         Since then, a lot has changed...
       </p>
     </section>
