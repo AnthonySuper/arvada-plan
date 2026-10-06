@@ -15,10 +15,13 @@
  *
  * Downloads are cached in .cache/census so re-runs are fast.
  */
-import { execFileSync } from "node:child_process";
-import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { execFile } from "node:child_process";
+import { access, mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { promisify } from "node:util";
+
+const execFileAsync = promisify(execFile);
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CACHE = path.join(ROOT, ".cache", "census");
@@ -51,14 +54,26 @@ const ACS_TABLES = {
 
 const WWW2 = "https://www2.census.gov/programs-surveys";
 
+async function exists(file) {
+  try {
+    await access(file);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/** Reads a Census text file. They're Latin-1, not UTF-8. */
+const readText = (file) => readFile(file, "latin1");
+
 async function download(url, file) {
   const dest = path.join(CACHE, file);
-  if (existsSync(dest)) return dest;
+  if (await exists(dest)) return dest;
   console.log(`  downloading ${url}`);
   const res = await fetch(url);
   if (!res.ok) throw new Error(`${res.status} fetching ${url}`);
-  mkdirSync(path.dirname(dest), { recursive: true });
-  writeFileSync(dest, Buffer.from(await res.arrayBuffer()));
+  await mkdir(path.dirname(dest), { recursive: true });
+  await writeFile(dest, Buffer.from(await res.arrayBuffer()));
   return dest;
 }
 
@@ -86,8 +101,8 @@ function splitCsv(line) {
   return out;
 }
 
-function readCsv(file) {
-  const [header, ...rows] = readFileSync(file, "latin1").trim().split(/\r?\n/).map(splitCsv);
+async function readCsv(file) {
+  const [header, ...rows] = (await readText(file)).trim().split(/\r?\n/).map(splitCsv);
   return rows.map((r) => Object.fromEntries(header.map((h, i) => [h, r[i]])));
 }
 
@@ -103,7 +118,7 @@ async function fetchPopulation() {
     `${WWW2}/popest/datasets/2010-2020/intercensal/cities/sub-est2020int.csv`,
     "pep/sub-est2020int.csv",
   );
-  const icRow = readCsv(intercensal).find(
+  const icRow = (await readCsv(intercensal)).find(
     (r) => r.SUMLEV === "162" && r.STATE === STATE_FIPS && r.PLACE === PLACE_FIPS,
   );
   for (let year = 2010; year <= 2019; year++) {
@@ -121,7 +136,7 @@ async function fetchPopulation() {
   vintage++;
   if (!file) throw new Error("Could not find a post-2020 population estimates vintage");
 
-  const row = readCsv(file).find(
+  const row = (await readCsv(file)).find(
     (r) => r.SUMLEV === "162" && r.STATE === STATE_FIPS && r.PLACE === PLACE_FIPS,
   );
   for (let year = 2020; year <= vintage; year++) {
@@ -156,36 +171,36 @@ async function fetchAcsSequenceYear(year) {
   );
 
   const dir = path.join(CACHE, "acs", String(year), "unzipped");
-  if (!existsSync(dir)) {
-    mkdirSync(dir, { recursive: true });
-    execFileSync("unzip", ["-oq", zip, "-d", dir]);
+  if (!(await exists(dir))) {
+    await mkdir(dir, { recursive: true });
+    await execFileAsync("unzip", ["-oq", zip, "-d", dir]);
   }
 
   // Find Arvada's logical record number in the geography file.
-  const geoFile = readdirSync(dir).find((f) => /^g\d+1\w\w\.csv$/i.test(f));
-  const geoLine = readFileSync(path.join(dir, geoFile), "latin1")
+  const geoFile = (await readdir(dir)).find((f) => /^g\d+1\w\w\.csv$/i.test(f));
+  const geoLine = (await readText(path.join(dir, geoFile)))
     .split(/\r?\n/)
     .map(splitCsv)
     .find((r) => r.includes(`16000US${GEOID}`));
   const logrecno = geoLine[4];
 
   // Lookup rows with a start position tell us where a table begins in its sequence file.
-  const lookup = readFileSync(lookupFile, "latin1").split(/\r?\n/).map(splitCsv);
+  const lookup = (await readText(lookupFile)).split(/\r?\n/).map(splitCsv);
   const result = {};
   for (const [key, { table, cell }] of Object.entries(ACS_TABLES)) {
     const def = lookup.find((r) => r[1] === table && r[4]?.trim());
     if (!def) continue;
     const seq = String(def[2]).padStart(4, "0");
     const start = Number(def[4]);
-    const read = (prefix) => {
+    const read = async (prefix) => {
       const f = path.join(dir, `${prefix}${year}1${STATE_ABBR}${seq}000.txt`);
-      const row = readFileSync(f, "latin1")
+      const row = (await readText(f))
         .split(/\r?\n/)
         .map(splitCsv)
         .find((r) => r[5] === logrecno);
       return Number(row[start - 1 + cell - 1]);
     };
-    result[key] = { estimate: read("e"), moe: read("m") };
+    result[key] = { estimate: await read("e"), moe: await read("m") };
   }
   return result;
 }
@@ -203,7 +218,7 @@ async function fetchAcsTableYear(year) {
       `acs/${year}/${name}`,
     );
     if (!file) return null; // Year not released yet.
-    const lines = readFileSync(file, "latin1").trim().split(/\r?\n/);
+    const lines = (await readText(file)).trim().split(/\r?\n/);
     const header = lines[0].split("|");
     const row = lines.find((l) => l.startsWith(`1600000US${GEOID}|`)).split("|");
     const cellId = String(cell).padStart(3, "0");
@@ -238,5 +253,5 @@ const output = {
   acs1: await fetchAcs(),
 };
 
-writeFileSync(OUT, JSON.stringify(output, null, 2) + "\n");
+await writeFile(OUT, JSON.stringify(output, null, 2) + "\n");
 console.log(`Wrote ${path.relative(ROOT, OUT)}`);
