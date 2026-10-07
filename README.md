@@ -11,14 +11,16 @@ npm run deploy  # Cloudflare, via OpenNext
 
 ## Where things live
 
-| What                                   | Where                                         |
-| -------------------------------------- | --------------------------------------------- |
-| Prose for each part of the page        | `src/components/sections/*`                   |
-| Colors, spacing, fonts                 | `src/app/globals.css` (start with `--brand-hue`) |
-| Every cited source                     | `src/data/sources.tsx`                        |
-| Census numbers (generated)             | `src/data/census.json`, read via `src/data/census.ts` |
-| Hand-entered facts (G Line, CPI, etc.) | `src/data/*.ts`                               |
-| Charts, built from the data at render  | `src/components/charts/*`                     |
+| What                                   | Where                                                            |
+| -------------------------------------- | ---------------------------------------------------------------- |
+| Prose for each part of the page        | `src/components/sections/*`                                      |
+| Colors, spacing, fonts                 | `src/app/globals.css` (start with `--brand-hue`)                 |
+| Every cited source                     | `src/data/sources.tsx`                                           |
+| Census numbers (generated)             | `src/data/census.json`, read via `src/data/census.ts`            |
+| Hand-entered facts (G Line, CPI, etc.) | `src/data/*.ts`                                                  |
+| Charts, built from the data at render  | `src/components/charts/*`                                        |
+| Link preview, title, description       | `src/data/site.ts`, `src/app/opengraph-image.tsx`                |
+| Favicon / iPhone home-screen icon      | `src/app/icon.tsx`, `src/app/apple-icon.tsx` (logo in `assets/`) |
 
 ## Citing a source
 
