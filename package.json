@@ -11,7 +11,9 @@
     "lint": "eslint",
     "lint:ox": "oxlint",
     "format": "oxfmt",
-    "format:check": "oxfmt --check"
+    "format:check": "oxfmt --check",
+    "data:census": "node scripts/fetch-census-data.mjs",
+    "postbuild": "node scripts/check-footnotes.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

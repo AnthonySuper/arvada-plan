@@ -1,0 +1,16 @@
+.whatis {
+  max-width: var(--measure);
+  margin: auto;
+  padding: 0 var(--space);
+  display: grid;
+  gap: var(--space);
+
+  h2 {
+    font-size: var(--step-2);
+    font-weight: 800;
+  }
+
+  ul {
+    padding-inline-start: calc(2 * var(--space));
+  }
+}

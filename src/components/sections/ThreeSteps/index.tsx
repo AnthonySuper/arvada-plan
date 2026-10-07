@@ -1,0 +1,131 @@
+import Cite from "@/components/footnotes/Cite";
+import Todo from "@/components/layout/Todo";
+import type { ReactNode } from "react";
+import styles from "./styles.module.css";
+
+function Step({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <li className={styles.step}>
+      <h3 className={styles.stepTitle}>{title}</h3>
+      <div className={styles.stepBody}>{children}</div>
+    </li>
+  );
+}
+
+/** A sub-point inside a Step, with a rule down its side. */
+function SubPoint({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <div className={styles.subPoint}>
+      <h4>{title}</h4>
+      {children}
+    </div>
+  );
+}
+
+export default function ThreeSteps() {
+  return (
+    <section className={styles.section} aria-labelledby="three-steps-heading">
+      <h2 id="three-steps-heading" className={styles.heading}>
+        Three steps to make sure Arvada&apos;s future stays bright
+      </h2>
+
+      <ol className={styles.steps}>
+        <Step title="Make each G-Line Station a Destination">
+          <p>
+            Olde Town Arvada proves it—Train stations are more fun with things to do near them.
+            Unfortunately, not every station in Arvada has equal amenities. Some, like the 60th and
+            Sheridan and Wheat Ridge/Ward stations, have parking lots and little else.
+          </p>
+          <p>
+            We propose that the city allow a greater diversity of experiences near these
+            stations—Restaurants, bars, and other amenities that give people a reason to stop by.
+          </p>
+          <Todo>
+            Wheat Ridge/Ward station is in Wheat Ridge, not Arvada, so Arvada&apos;s plan can&apos;t
+            rezone around it. Arvada Ridge may be a better second example.
+          </Todo>
+        </Step>
+
+        <Step title="Relax Parking Requirements Near Transit">
+          <p>
+            Right now the city of Arvada dictates the same parking requirements for every building,
+            regardless of location. This makes no sense for housing built near a train or a
+            high-frequency bus station.
+          </p>
+          <p>
+            We&apos;re not saying to eliminate parking. But the one-size-fits-all model is costly,
+            inefficient, and wastes space. We should relax these requirements near transit, so
+            builders and business owners can right-size their parking for the needs of their clients
+            and tenants.
+          </p>
+          <Todo>
+            This may be out of date. Colorado&apos;s HB24-1304 bars cities in metro areas from
+            enforcing minimum parking requirements on multifamily and mostly-residential mixed-use
+            projects near frequent transit, starting June 30, 2025 (see{" "}
+            <a href="https://leg.colorado.gov/bills/hb24-1304">the bill</a> and{" "}
+            <a href="https://cdola.colorado.gov/parking-minimums">DOLA&apos;s summary</a>). Check
+            Arvada&apos;s current Land Development Code. If housing is already covered, consider
+            focusing on what&apos;s left: commercial uses, bus corridors that miss the state&apos;s
+            transit map, or parking maximums.
+          </Todo>
+        </Step>
+
+        <Step title="Promote Downsize-Friendly Housing">
+          <p>
+            Like most of the Denver Metro region, Arvada has an aging population that is expected to
+            grow over the next few decades. As people get older, have their kids move out, and
+            retire, the same house they may have purchased in the 1980s might no longer make sense
+            for their needs—but right now, they&apos;d have to leave their communities if they want
+            to downsize. It doesn&apos;t have to be this way. A few small changes to our zoning code
+            could make it easier for seniors to keep living in their community.
+          </p>
+          <Todo>
+            Cite the aging-population claim. Options: Colorado State Demography Office population
+            projections by age for Jefferson County, or Arvada&apos;s median age (ACS table B01002)
+            in 2014 vs. today, which could be added to <code>scripts/fetch-census-data.mjs</code>.
+          </Todo>
+
+          <SubPoint title="1. Streamline Permitting for ADUs">
+            <p>
+              Accessory Dwelling Units, also called backyard cottages or mother-in-law apartments,
+              are endorsed by the AARP
+              <Cite source="aarpAdu" /> as a great way for longtime residents to find flexible
+              housing options that work for them in old age. An ADU is essentially a separate,
+              detached house on a lot where a larger house already exists—perfect for seniors who
+              want independence, but still need help from their children from time to time.
+            </p>
+            <p>
+              Arvada&apos;s ADU laws have &ldquo;poison pills,&rdquo; like owner-occupancy
+              requirements, that could be removed from the code to make these more feasible.
+            </p>
+            <Todo>
+              This may be out of date. Colorado&apos;s HB24-1152 requires metro-area cities to allow
+              ADUs with administrative approval, and bars owner-occupancy and parking requirements
+              for them, starting June 30, 2025 (see{" "}
+              <a href="https://dlg.colorado.gov/accessory-dwelling-units">DOLA&apos;s summary</a>).
+              Check what&apos;s left in Arvada&apos;s code, like size limits, setbacks, fees, or
+              design rules, and cite the specific section.
+            </Todo>
+          </SubPoint>
+
+          <SubPoint title="2. Make it easier to build elevators">
+            <p>
+              As seniors age, stairs can become a barrier. Elevators solve this problem by
+              eliminating it entirely, but American laws place unnecessarily strict requirements on
+              building them. As a result, many small apartment and condo complexes are built as
+              walk-ups instead. We could remove those regulatory requirements, bringing our
+              standards more in line with those of the rest of the world, and make it easier for
+              people to install elevators.
+            </p>
+            <Todo>
+              Cite this. The Center for Building in North America has published research comparing
+              U.S. elevator costs and codes with Europe&apos;s. Also worth naming the specific rule
+              Arvada could change. Many elevator requirements are set by state law or building
+              codes, not zoning.
+            </Todo>
+          </SubPoint>
+        </Step>
+      </ol>
+    </section>
+  );
+}
